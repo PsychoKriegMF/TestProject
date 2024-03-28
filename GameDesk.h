@@ -9,14 +9,21 @@
 #include "Deck.h"
 #include "Player.h"
 
+class iViewerDesk {
+public:
+	virtual int CurrentDeck()const = 0;
+	virtual Player& PlayerN(int position)const = 0;
+	virtual int CurrentSlots()const = 0;
+};
 
-class GameDesk {
+
+class GameDesk: public iViewerDesk {
 public:
 	void SetStartDeck(Deck deck);  // стартовый набор колоды
 	Deck GetTopCard(); // узнать верхнюю карту колоды
 	Deck GetBottomCard();//узнать нижнюю карту колоды
 
-	int CurrentDeck(); //сколько карт осталось в колоде
+	int CurrentDeck()const; //сколько карт осталось в колоде
 
 	void DraftCard(Card played);
 	// в пару можно сделать метод для отправки набора карт в сброс
@@ -29,13 +36,13 @@ public:
 	int CurrentPlayers()const;
 
 	void PlaceSlotN(Card card, bool visible, int position);
-	void PlaceSlot(Card card, bool visible);
+	void PlaceSlot(Card card, bool visible); // размещение нового слота
 
-	Card SlotN(int position);
+	Card SlotN(int position); // доступ к слотам на игровом столе
 
-	int CurrentSlots()const;
+	int CurrentSlots()const; // сколько карт на столе сейчас
 
-	Card FreeSlot(int position);
+	Card FreeSlot(int position); // убрать карты со слота
 	
 
 

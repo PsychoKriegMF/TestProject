@@ -135,6 +135,8 @@
     <ClInclude Include="CardGame.cpp" />
     <ClInclude Include="Controller.h" />
     <ClInclude Include="Deck.h" />
+    <ClInclude Include="Fool.h" />
+    <ClInclude Include="Game.h" />
     <ClInclude Include="GameDesk.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Rules.h" />

@@ -17,10 +17,23 @@
 //абстрактный класс
 class Rules {
 public:
+	Rules(std::string name, int minPlayers, int maxPlayers) :
+		minPlayers_(minPlayers), maxPlayers_(maxPlayers), name_(name), activePlayer_(0){}
+
 	virtual Deck StartDeck() = 0; // возвращает стартовую колоду
 	virtual void Initialdesk(GameDesk& obj) = 0; // первоначальная расстановка на поле
 	virtual std::vector<std::string> Actions() = 0;
-private:
+
+	int minPlayers()const;
+	int maxPlayers()const;
+	std::string Name()const;
+
+	bool CanStart(const GameDesk& obj);
+	bool CanAddPlayer(const GameDesk& obj);
+
+	virtual void PlayMove(const GameDesk& obj) = 0;
+
+protected:
 	int minPlayers_;
 	int maxPlayers_;
 	std::string name_;
